@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clínica Angry</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    #logo {
+        height: 85px;
+        width: 100px;
+    }
+</style>
+<body>
+
+  <!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <img id="logo" src="/img/logo.png" alt="">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/servicios">Servicios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/nosotros">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contacto">Contacto</a>
+          </li>
+        </ul>
+        
+        <!-- Sección del Usuario -->
+        <ul th:if="${seccion}" class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://via.placeholder.com/30" class="rounded-circle" alt="Usuario"> Usuario
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Perfil</a></li>
+              <li><a class="dropdown-item" href="#">Dashboard</a></li>
+              <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+            </ul>
+          </li>
+        </ul>
+        
+        <ul th:if="${seccion == null || !seccion}" class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+          <a class="btn btn-primary" href="/usuario/iniciar-sesion"> iniciar sesion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Slider/Carousel -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJLWwj1orEEaE1AMXbPq8uaIwtsqLelRRXcA&s" class="d-block w-100" alt="Clínica Angry">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Bienvenido a la Clínica Angry</h5>
+          <p>Tu salud es nuestra prioridad.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Servicio Médico General">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Consulta Médica General</h5>
+          <p>Atención integral para toda la familia.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Odontología">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Odontología</h5>
+          <p>Cuida tu salud bucal con nuestros especialistas.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Sección de Servicios -->
+  <section id="servicios" class="py-5">
+    <div class="container">
+      <h2 class="text-center">Servicios Médicos</h2>
+      <p class="text-center text-muted">Conoce los servicios que ofrecemos en la Clínica Angry</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://infraestructuramedica.mx/wp-content/uploads/2021/09/como-administrar-una-clinica-diseno-de-clinicas-modernas-arquitectos-medicos.png" class="card-img-top" alt="Servicio 1">
+            <div class="card-body">
+              <h5 class="card-title">Consulta General</h5>
+              <p class="card-text">Atención médica integral para toda la familia.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://infraestructuramedica.mx/wp-content/uploads/2021/09/como-administrar-una-clinica-diseno-de-clinicas-modernas-arquitectos-medicos.png" class="card-img-top" alt="Servicio 2">
+            <div class="card-body">
+              <h5 class="card-title">Odontología</h5>
+              <p class="card-text">Cuida de tu sonrisa con nuestros expertos.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://infraestructuramedica.mx/wp-content/uploads/2021/09/como-administrar-una-clinica-diseno-de-clinicas-modernas-arquitectos-medicos.png" class="card-img-top" alt="Servicio 3">
+            <div class="card-body">
+              <h5 class="card-title">Pediatría</h5>
+              <p class="card-text">Especialistas en la salud de los más pequeños.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Contacto -->
+  <section id="contacto" class="bg-light py-5">
+    <div class="container">
+      <h2 class="text-center">Contáctanos</h2>
+      <p class="text-center text-muted">Estamos aquí para ayudarte. Llámanos o visítanos en nuestra clínica.</p>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Dirección</h5>
+          <p>Av. Salud 123, Ciudad Feliz, País</p>
+        </div>
+        <div class="col-md-6">
+          <h5>Teléfono</h5>
+          <p>+123 456 7890</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2024 Clínica Angry. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
