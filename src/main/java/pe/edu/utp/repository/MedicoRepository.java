@@ -7,5 +7,5 @@ import pe.edu.utp.model.Medico;
 
 @Repository
 public interface MedicoRepository extends JpaRepository<Medico, Integer> {
-    // Métodos personalizados pueden ir aquí
+    Medico findByUsuario_IdUsuario(Integer idUsuario);
 }

@@ -1,7 +1,8 @@
 package pe.edu.utp.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "Paciente")
@@ -26,8 +27,7 @@ public class Paciente{
     @Column(length = 30)
     private String dni;
 
-    @Temporal(TemporalType.DATE)
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
 
     public Paciente() {
 		// TODO Auto-generated constructor stub
@@ -36,7 +36,7 @@ public class Paciente{
 	
 
 	public Paciente(Integer idPaciente, Usuario usuario, String nombre, String apellidos, String telefono, String dni,
-			Date fechaNacimiento) {
+	LocalDate fechaNacimiento) {
 		super();
 		this.idPaciente = idPaciente;
 		this.usuario = usuario;
@@ -101,11 +101,11 @@ public class Paciente{
 
 
 
-	public Date getFechaNacimiento() {
+	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
     

@@ -27,9 +27,13 @@ public class MedicoService {
         return medicoRepository.findAll();
     }
 
+    public Medico buscarPorUsuario(int id){
+        return medicoRepository.findByUsuario_IdUsuario(id);
+    }
+
     // Método para buscar un médico por ID
-    public Optional<Medico> buscarMedicoPorId(Integer id) {
-        return medicoRepository.findById(id);
+    public Medico buscarMedicoPorId(Integer id) {
+        return medicoRepository.findById(id).orElseThrow(() -> new RuntimeException("no se encontro medico"));
     }
 
     // Método para actualizar un médico existente

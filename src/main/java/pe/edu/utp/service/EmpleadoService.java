@@ -26,10 +26,15 @@ public class EmpleadoService {
     public List<Empleado> obtenerTodosEmpleados() {
         return empleadoRepository.findAll();
     }
+    
+    public Empleado buscarPorUsuario(int id){
+        return empleadoRepository.findByUsuario_IdUsuario(id);
+    }
+
 
     // Método para buscar un empleado por ID
-    public Optional<Empleado> buscarEmpleadoPorId(Integer id) {
-        return empleadoRepository.findById(id);
+    public Empleado buscarEmpleadoPorId(Integer id) {
+        return empleadoRepository.findById(id).orElseThrow( () -> new RuntimeException("no se encontro"));
     }
 
     // Método para actualizar un empleado existente

@@ -6,5 +6,5 @@ import pe.edu.utp.model.Empleado;
 
 @Repository
 public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
-    // Métodos personalizados pueden ir aquí
+    Empleado findByUsuario_IdUsuario(Integer idUsuario);
 }

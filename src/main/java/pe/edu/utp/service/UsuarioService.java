@@ -40,9 +40,13 @@ public class UsuarioService {
     }
 
     // Método para buscar un usuario por correo
-    public Optional<Usuario> buscarPorCorreo(String correo) {
-        return Optional.ofNullable(usuarioRepository.findByCorreo(correo));
+    public Usuario buscarPorCorreo(String correo) {
+        return usuarioRepository.findByCorreo(correo);
     }
 
     // Otros métodos de negocio relacionados con Usuario
+    public void saveUsuario(Usuario usuario) {
+    	usuario.setContrasena(encriptarContrasena(usuario.getContrasena()));
+    	usuarioRepository.save(usuario);
+    }
 }

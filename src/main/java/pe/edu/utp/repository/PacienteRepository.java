@@ -6,5 +6,5 @@ import pe.edu.utp.model.Paciente;
 
 @Repository
 public interface PacienteRepository extends JpaRepository<Paciente, Integer> {
-    // Métodos personalizados pueden ir aquí
+    Paciente findByUsuario_IdUsuario(Integer idUsuario);
 }

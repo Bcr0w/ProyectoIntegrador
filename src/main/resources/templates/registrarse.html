@@ -12,9 +12,6 @@
         height: 85px;
         width: 100px;
     }
-    footer{
-        bottom: 0;
-    }
 </style>
 
 <body>
@@ -61,29 +58,53 @@
         </div>
     </nav>
 
-    <!-- Iniciar Sesion -->
+    <!-- Registrarse -->
     <div class="container mt-5 mb-5">
-        <h2 class="text-center">Iniciar Sesión</h2>
+        <h2 class="text-center">Registrarse</h2>
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form th:action="@{/usuario/ingresar}" method="post">
+                <form th:action="@{/usuario/crear}" th:object="${registroDto}" method="post">
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" th:field="*{nombre}" placeholder="Ingrese su nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" th:field="*{apellidos}" placeholder="Ingrese sus apellidos" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" th:field="*{telefono}" placeholder="Ingrese su teléfono" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dni" class="form-label">DNI</label>
+                        <input type="number" class="form-control" th:field="*{dni}" placeholder="Ingrese su DNI" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="birthdate" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" th:field="*{fechaNacimiento}" required>
+                    </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Ingrese su correo" required>
+                        <input type="email" class="form-control" th:field="*{correo}" placeholder="Ingrese su correo" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control"  name="password" id="password" placeholder="Ingrese su contraseña"
-                            required>
+                        <input type="password" class="form-control" th:field="*{contrasena}" placeholder="Ingrese su contraseña" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                        <input type="password" class="form-control" th:field="*{confirmarContrasena}" placeholder="Confirme su contraseña" required>
                     </div>
                     <p th:if="${error != null}" th:text="'Error: ' + ${error}" class="text-danger">fwafaw</p>
-                    <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Registrarse</button>
+                    <div class="d-flex justify-content-between mt-3">
                         <div>
-                            <a href="/usuario/registrarse" class="link-primary">¿No tienes cuenta?</a>
+                            <a href="/usuario/iniciar-sesion" class="link-primary">¿Ya tienes cuenta? Inicia sesión</a>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Iniciar Sesión</button>
                 </form>
+
             </div>
         </div>
     </div>

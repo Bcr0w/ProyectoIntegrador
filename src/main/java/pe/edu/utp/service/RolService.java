@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.utp.model.Rol;
+import pe.edu.utp.model.Rol.RolEnum;
 import pe.edu.utp.repository.RolRepository;
 
 @Service
@@ -29,6 +30,10 @@ public class RolService {
     // Método para buscar un rol por ID
     public Optional<Rol> buscarRolPorId(Integer id) {
         return rolRepository.findById(id);
+    }
+    //buscar rol por nombre
+    public Rol buscarRoLPorNombre(RolEnum nombre){
+      return rolRepository.findByNombreRol(nombre);
     }
 
     // Método para actualizar un rol existente

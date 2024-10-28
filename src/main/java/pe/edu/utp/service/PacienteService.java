@@ -27,9 +27,13 @@ public class PacienteService {
         return pacienteRepository.findAll();
     }
 
+    public Paciente buscarPorUsuario(int id){
+        return pacienteRepository.findByUsuario_IdUsuario(id);
+    }
+
     // Método para buscar un paciente por ID
-    public Optional<Paciente> buscarPacientePorId(Integer id) {
-        return pacienteRepository.findById(id);
+    public Paciente buscarPacientePorId(Integer id) {
+        return pacienteRepository.findById(id).orElseThrow( () -> new RuntimeException("no se encontro"));
     }
 
     // Método para actualizar un paciente existente

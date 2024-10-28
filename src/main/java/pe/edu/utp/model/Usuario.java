@@ -18,6 +18,10 @@ public class Usuario {
     @JoinColumn(name = "id_rol", nullable = false)
     private Rol rol;
 
+	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Paciente paciente; // Relación uno a uno con Paciente
+
+
     public Usuario() {
 		// TODO Auto-generated constructor stub
 	}

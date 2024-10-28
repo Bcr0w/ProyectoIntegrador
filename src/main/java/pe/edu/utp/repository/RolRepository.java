@@ -4,8 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import pe.edu.utp.model.Rol;
+import pe.edu.utp.model.Rol.RolEnum;
 
 @Repository
 public interface RolRepository extends JpaRepository<Rol, Integer> {
-    // Puedes agregar métodos personalizados aquí si es necesario
+   Rol findByNombreRol(RolEnum nombreRol);
 }
