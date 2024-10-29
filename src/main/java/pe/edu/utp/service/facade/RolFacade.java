@@ -16,4 +16,8 @@ public class RolFacade {
     public Rol getRol(RolEnum nombre){
         return service.buscarRoLPorNombre(nombre);
     }
+
+    public Rol findById(int id){
+        return service.buscarRolPorId(id);
+    }
 }

@@ -28,8 +28,8 @@ public class RolService {
     }
 
     // Método para buscar un rol por ID
-    public Optional<Rol> buscarRolPorId(Integer id) {
-        return rolRepository.findById(id);
+    public Rol buscarRolPorId(Integer id) {
+        return rolRepository.findById(id).orElseThrow(() -> new RuntimeException("No se encontro el rol"));
     }
     //buscar rol por nombre
     public Rol buscarRoLPorNombre(RolEnum nombre){

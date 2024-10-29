@@ -31,6 +31,10 @@ public class EmpleadoService {
         return empleadoRepository.findByUsuario_IdUsuario(id);
     }
 
+    public List<Empleado> buscarPorNombre(String nombre){
+        return empleadoRepository.findByNombreContaining(nombre);
+    }
+
 
     // Método para buscar un empleado por ID
     public Empleado buscarEmpleadoPorId(Integer id) {

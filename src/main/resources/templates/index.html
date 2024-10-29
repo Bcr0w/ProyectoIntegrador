@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
@@ -46,14 +46,15 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
               <img src="https://via.placeholder.com/30" class="rounded-circle" alt="Usuario"> <span
-                th:text="${session.nombre}">hola</span>
+                th:text="${session.nombre}"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Perfil</a></li>
-              <li th:if="${session.rol == 'RECEPCIONISTA' or session.rol == 'ADMIN' or session.rol == 'MEDICO'}">
-                <a class="dropdown-item" th:href="${session.rol == 'RECEPCIONISTA' ? '/recepcionista/dashboard' :
-                                                        session.rol == 'ADMIN' ? '/admin/dashboard' :
-                                                        session.rol == 'MEDICO' ? '/medico/dashboard' : '#'}">
+              <li th:unless="${session.rol == 'PACIENTE'}">
+                <a class="dropdown-item" 
+                   th:href="${session.rol == 'RECEPCIONISTA' ? '/recepcionista/dashboard' : 
+                             session.rol == 'ADMIN' ? '/admin/dashboard' : 
+                             session.rol == 'MEDICO' ? '/medico/dashboard' : '#'}">
                     Dashboard
                 </a>
             </li>

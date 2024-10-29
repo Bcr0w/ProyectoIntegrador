@@ -2,6 +2,7 @@ package pe.edu.utp.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
@@ -15,23 +16,21 @@ public class HorarioMedico  {
     @JoinColumn(name = "id_medico", nullable = false)
     private Medico medico;
 
-    @Column(name = "dia_semana", length = 20)
-    private String diaSemana;
+    private LocalDate fecha;
 
     private LocalTime horaInicio;
     private LocalTime horaFin;
 
-    public HorarioMedico() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public HorarioMedico(Integer idHorario, Medico medico, String diaSemana, LocalTime horaInicio, LocalTime horaFin) {
-		super();
+    public HorarioMedico(Integer idHorario, Medico medico, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin) {
 		this.idHorario = idHorario;
 		this.medico = medico;
-		this.diaSemana = diaSemana;
+		this.fecha = fecha;
 		this.horaInicio = horaInicio;
 		this.horaFin = horaFin;
+	}
+
+	public HorarioMedico() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getIdHorario() {
@@ -50,12 +49,12 @@ public class HorarioMedico  {
 		this.medico = medico;
 	}
 
-	public String getDiaSemana() {
-		return diaSemana;
+	public LocalDate getFecha() {
+		return fecha;
 	}
 
-	public void setDiaSemana(String diaSemana) {
-		this.diaSemana = diaSemana;
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
 	}
 
 	public LocalTime getHoraInicio() {
@@ -73,5 +72,7 @@ public class HorarioMedico  {
 	public void setHoraFin(LocalTime horaFin) {
 		this.horaFin = horaFin;
 	}
+
+	
     
 }

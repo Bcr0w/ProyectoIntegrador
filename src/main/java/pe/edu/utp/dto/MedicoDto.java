@@ -1,36 +1,34 @@
 package pe.edu.utp.dto;
 
-import java.time.LocalDate;
+public class MedicoDto {
 
-public class RegistroDto {
-    
+    // Atributos de Medico
     private String nombre;
     private String apellidos;
     private String telefono;
-    private String dni;
-    private LocalDate fechaNacimiento;
+    private String direccion;
+    private Integer idEspecialidad;
+
+    // Atributos de Usuario
     private String correo;
     private String contrasena;
-    private String confirmarContrasena;
+    private Integer idRol;
 
-    
-
-    public RegistroDto() {
-    }
-
-    public RegistroDto(String nombre, String apellidos, String telefono, String dni, LocalDate fechaNacimiento,
-            String correo, String contrasena, String confirmarContrasena) {
+    public MedicoDto(String nombre, String apellidos, String telefono, String direccion, Integer idEspecialidad,
+            String correo, String contrasena, Integer idRol) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
-        this.dni = dni;
-        this.fechaNacimiento = fechaNacimiento;
+        this.direccion = direccion;
+        this.idEspecialidad = idEspecialidad;
         this.correo = correo;
         this.contrasena = contrasena;
-        this.confirmarContrasena = confirmarContrasena;
+        this.idRol = idRol;
     }
 
-    // Getters y Setters
+    public MedicoDto() {
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -55,20 +53,20 @@ public class RegistroDto {
         this.telefono = telefono;
     }
 
-    public String getDni() {
-        return dni;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
+    public Integer getIdEspecialidad() {
+        return idEspecialidad;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setIdEspecialidad(Integer idEspecialidad) {
+        this.idEspecialidad = idEspecialidad;
     }
 
     public String getCorreo() {
@@ -87,12 +85,12 @@ public class RegistroDto {
         this.contrasena = contrasena;
     }
 
-    public String getConfirmarContrasena() {
-        return confirmarContrasena;
+    public Integer getIdRol() {
+        return idRol;
     }
 
-    public void setConfirmarContrasena(String confirmarContrasena) {
-        this.confirmarContrasena = confirmarContrasena;
+    public void setIdRol(Integer idRol) {
+        this.idRol = idRol;
     }
 
 }

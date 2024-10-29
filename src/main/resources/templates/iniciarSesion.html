@@ -14,6 +14,7 @@
     }
     footer{
         bottom: 0;
+        margin-top: 20px;
     }
 </style>
 
@@ -22,7 +23,7 @@
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <img id="logo" src="./img/logo.png" alt="">
+            <img id="logo" src="/img/logo.png" alt="">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,19 +45,33 @@
                 </ul>
 
                 <!-- Sección del Usuario -->
-                <ul class="navbar-nav ms-auto">
+                <ul th:if="${session.seccion}" class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://via.placeholder.com/30" class="rounded-circle" alt="Usuario"> Usuario
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Perfil</a></li>
-                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
-                        </ul>
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <img src="https://via.placeholder.com/30" class="rounded-circle" alt="Usuario"> <span
+                          th:text="${session.nombre}"></span>
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        <li th:unless="${session.rol == 'PACIENTE'}">
+                          <a class="dropdown-item" 
+                             th:href="${session.rol == 'RECEPCIONISTA' ? '/recepcionista/dashboard' : 
+                                       session.rol == 'ADMIN' ? '/admin/dashboard' : 
+                                       session.rol == 'MEDICO' ? '/medico/dashboard' : '#'}">
+                              Dashboard
+                          </a>
+                      </li>
+                        <li><a class="dropdown-item" href="/usuario/cerrar">Cerrar sesión</a></li>
+                      </ul>
                     </li>
-                </ul>
+                  </ul>
+          
+                  <ul th:if="${session.seccion == null or !session.seccion}" class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                      <a class="btn btn-primary" href="/usuario/iniciar-sesion"> iniciar sesion</a>
+                    </li>
+                  </ul>
             </div>
         </div>
     </nav>

@@ -1,36 +1,41 @@
 package pe.edu.utp.dto;
 
-import java.time.LocalDate;
+public class EmpleadoDto {
 
-public class RegistroDto {
-    
     private String nombre;
+
     private String apellidos;
+
     private String telefono;
-    private String dni;
-    private LocalDate fechaNacimiento;
+
+    private String direccion;
+
+    private String cargo;
+
     private String correo;
+
     private String contrasena;
-    private String confirmarContrasena;
 
-    
+    private Integer idRol; 
 
-    public RegistroDto() {
+    // Constructor vacío
+    public EmpleadoDto() {
     }
 
-    public RegistroDto(String nombre, String apellidos, String telefono, String dni, LocalDate fechaNacimiento,
-            String correo, String contrasena, String confirmarContrasena) {
+    // Constructor con parámetros
+    public EmpleadoDto(String nombre, String apellidos, String telefono, String direccion, String cargo,
+                       String correo, String contrasena, Integer idRol) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
-        this.dni = dni;
-        this.fechaNacimiento = fechaNacimiento;
+        this.direccion = direccion;
+        this.cargo = cargo;
         this.correo = correo;
         this.contrasena = contrasena;
-        this.confirmarContrasena = confirmarContrasena;
+        this.idRol = idRol;
     }
 
-    // Getters y Setters
+
     public String getNombre() {
         return nombre;
     }
@@ -55,20 +60,20 @@ public class RegistroDto {
         this.telefono = telefono;
     }
 
-    public String getDni() {
-        return dni;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
+    public String getCargo() {
+        return cargo;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public String getCorreo() {
@@ -87,12 +92,11 @@ public class RegistroDto {
         this.contrasena = contrasena;
     }
 
-    public String getConfirmarContrasena() {
-        return confirmarContrasena;
+    public Integer getIdRol() {
+        return idRol;
     }
 
-    public void setConfirmarContrasena(String confirmarContrasena) {
-        this.confirmarContrasena = confirmarContrasena;
+    public void setIdRol(Integer idRol) {
+        this.idRol = idRol;
     }
-
 }

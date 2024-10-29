@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpSession;
-import pe.edu.utp.dto.registroDto;
+import pe.edu.utp.dto.RegistroDto;
 import pe.edu.utp.model.Empleado;
 import pe.edu.utp.model.Medico;
 import pe.edu.utp.model.Paciente;
@@ -47,7 +47,7 @@ public class UsuarioController {
  
  @GetMapping("/registrarse")
  public String registrarse(Model model) {
-    model.addAttribute("registroDto", new registroDto());
+    model.addAttribute("registroDto", new RegistroDto());
      return "registrarse";
  }
  
@@ -64,7 +64,8 @@ public class UsuarioController {
 	   if (user != null && facade.verificarContraseña(password, user.getContrasena())) {
         // Si la contraseña es correcta, establecer la sesión
         session.setAttribute("seccion", true);
-        session.setAttribute("rol", user.getRol().getNombreRol()); // Almacenar el rol del usuario
+        session.setAttribute("rol", user.getRol().getNombreRol().name()); // Almacenar el rol del usuario
+
         
 		//por dependiendo del rol se enviara el user y el id 
 		switch(user.getRol().getNombreRol()){
@@ -96,10 +97,12 @@ public class UsuarioController {
         model.addAttribute("error", "Correo o contraseña incorrectos");
         return "iniciarSesion"; // Redirigir a la página de inicio de sesión
     }
+
+    
   }
 
   @PostMapping("/crear")
-  public String crear(@ModelAttribute registroDto registroDTO, Model model){
+  public String crear(@ModelAttribute RegistroDto registroDTO, Model model){
 	//Validar que las contraseñas coincidan
     if (!registroDTO.getContrasena().equals(registroDTO.getConfirmarContrasena())) {
         model.addAttribute("error", "Las contraseñas no coinciden.");

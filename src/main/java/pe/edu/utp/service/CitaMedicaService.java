@@ -3,6 +3,8 @@ package pe.edu.utp.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,8 +30,8 @@ public class CitaMedicaService {
     }
 
     // Método para buscar una cita médica por ID
-    public Optional<CitaMedica> buscarCitaMedicaPorId(Integer id) {
-        return citaMedicaRepository.findById(id);
+    public CitaMedica buscarCitaMedicaPorId(Integer id) {
+        return citaMedicaRepository.findById(id).orElseThrow(() -> new RuntimeException("No se encontro"));
     }
 
     // Método para actualizar una cita médica existente

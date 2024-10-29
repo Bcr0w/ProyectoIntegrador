@@ -27,6 +27,10 @@ public class EmpleadoFacade {
         return service.buscarPorUsuario(id);
     }
 
+    public List<Empleado> buscarPorNombre(String nombre){
+        return service.buscarPorNombre(nombre);
+    }
+
 
     // Método para buscar un empleado por ID
     public Empleado buscarEmpleadoPorId(Integer id) {

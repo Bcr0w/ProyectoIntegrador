@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,23 +25,39 @@
             <a class="nav-link" href="#">Servicios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">Nosotros</a>
+            <a class="nav-link active" href="/nosotros">Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contacto</a>
+            <a class="nav-link" href="/contacto">Contacto</a>
           </li>
         </ul>
 
         <!-- Sección del Usuario -->
-        <ul class="navbar-nav ms-auto">
+        <ul th:if="${session.seccion}" class="navbar-nav ms-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://via.placeholder.com/30" class="rounded-circle" alt="Usuario"> Usuario
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="https://via.placeholder.com/30" class="rounded-circle" alt="Usuario"> <span
+                th:text="${session.nombre}"></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Perfil</a></li>
-              <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+              <li th:unless="${session.rol == 'PACIENTE'}">
+                <a class="dropdown-item" 
+                   th:href="${session.rol == 'RECEPCIONISTA' ? '/recepcionista/dashboard' : 
+                             session.rol == 'ADMIN' ? '/admin/dashboard' : 
+                             session.rol == 'MEDICO' ? '/medico/dashboard' : '#'}">
+                    Dashboard
+                </a>
+            </li>
+              <li><a class="dropdown-item" href="/usuario/cerrar">Cerrar sesión</a></li>
             </ul>
+          </li>
+        </ul>
+
+        <ul th:if="${session.seccion == null or !session.seccion}" class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="btn btn-primary" href="/usuario/iniciar-sesion"> iniciar sesion</a>
           </li>
         </ul>
       </div>

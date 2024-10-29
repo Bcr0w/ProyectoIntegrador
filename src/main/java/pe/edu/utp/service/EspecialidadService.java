@@ -1,7 +1,6 @@
 package pe.edu.utp.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +27,8 @@ public class EspecialidadService {
     }
 
     // Método para buscar una especialidad por ID
-    public Optional<Especialidad> buscarEspecialidadPorId(Integer id) {
-        return especialidadRepository.findById(id);
+    public Especialidad buscarEspecialidadPorId(Integer id) {
+        return especialidadRepository.findById(id).orElseThrow(() -> new RuntimeException("no se encontro la especialidad"));
     }
 
     // Método para actualizar una especialidad existente
